@@ -1,54 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const board_game = document.querySelector('.board-game');
+    const boardGame = document.querySelector('.board-game');
     const game = new Game();
-    game.mount(board_game);
+    game.mount(boardGame);
 
-    const reset2 = document.querySelector('.reset');
-    reset2.addEventListener('click',() => game.reset_btn());
+    //reset button function
+    const resetBtn = document.querySelector('.reset');
+    resetBtn.addEventListener('click',() => game.resetBtn());
 
+    //circle button function
     const circleAll = document.querySelectorAll(".circle");
-    for(var i=0,len=circleAll.length; i<len; i++){
-      circleAll[i].addEventListener('click',  () => game.circle_btn());
+    for(let i=0; i < circleAll.length; i++){
+      circleAll[i].addEventListener('click',  () => game.circleBtn());
     };
 
-    const green = document.querySelector("#green");
-    green.addEventListener('click',  () => game.greenChange());
+    //color button function
+    const greenBtn = document.querySelector(".green");
+    greenBtn.addEventListener('click',  () => game.greenChange());
 
-    const pink = document.querySelector("#pink");
-    pink.addEventListener('click',  () => game.pinkChange());
+    const pinkBtn = document.querySelector(".pink");
+    pinkBtn.addEventListener('click',  () => game.pinkChange());
 
-    const purple = document.querySelector("#purple");
-    purple.addEventListener('click',  () => game.purpleChange());
+    const purpleBtn = document.querySelector(".purple");
+    purpleBtn.addEventListener('click',  () => game.purpleChange());
 
-    const lightGreen = document.querySelector("#lightGreen");
-    lightGreen.addEventListener('click',  () => game.lightGreenChange());
+    const lightGreenBtn = document.querySelector(".lightGreen");
+    lightGreenBtn.addEventListener('click',  () => game.lightGreenChange());
 
-    const red = document.querySelector("#red");
-    red.addEventListener('click',  () => game.redChange());
+    const redBtn = document.querySelector(".red");
+    redBtn.addEventListener('click',  () => game.redChange());
 
-    const orange = document.querySelector("#orange");
-    orange.addEventListener('click',  () => game.orangeChange());
+    const orangeBtn = document.querySelector(".orange");
+    orangeBtn.addEventListener('click',  () => game.orangeChange());
 
 });
 
 // ***********************************************************
-
-class Data{
-    constructor() {
-        for(let x = 1; x <= this.square ; x++) {
-            for(let y = 1; y <= this.square ; y++) {
-                this.datas = [
-                new Game(x,y,'color'),
-                ]
-            }
-        }
-    }
-};
-
-// ***********************************************************
-
-let random = 0;
-let i = 0;
 
 class Game {
     constructor(x,y,color) {
@@ -78,7 +64,7 @@ class Game {
         this.count = document.querySelector(".count");
         this.count.innerHTML = this.countNum;
         if (this.countNum === 0){
-            document.querySelector(".game_over").style.display="block";
+            document.querySelector(".game-over").style.display="block";
         }else if(this.countNum < 0){
             this.count.innerHTML = 0;
         } 
@@ -86,7 +72,7 @@ class Game {
     };
 
     addColor () {
-        random = Math.floor(Math.random()*5)+1;
+        let random = Math.floor(Math.random()*6)+1;
         if (random === 1){
             this.element.style.backgroundColor = "green";
         }else if (random === 2){
@@ -97,7 +83,7 @@ class Game {
             this.element.style.backgroundColor = "lightgreen";
         }else if (random === 5){
             this.element.style.backgroundColor = "red";
-        }else{
+        }else if (random === 6){
             this.element.style.backgroundColor = "orange";   
         };
     };
@@ -126,13 +112,13 @@ class Game {
         this.element.style.backgroundColor = "orange";
     }
 
-    circle_btn(){
+    circleBtn(){
         this.countDown();
         this.scoreCount();
     };
 
-    reset_btn(){
-        this.gameOver = document.querySelector(".game_over");
+    resetBtn(){
+        this.gameOver = document.querySelector(".game-over");
         this.gameOver.style.display = "none";
 
         this.countReset();
@@ -143,14 +129,15 @@ class Game {
     addId(){
         for(this.x; this.x <= this.square ; this.x++) {
             for(this.y; this.y <= this.square ; this.y++) {
-                this.element.id = [this.x,this.y,'color'];
+                this.element.className = [this.x,this.y,'color'];
             }
         }
+        return this.x;
     };
 
 
     mount(parent) {
-        for(i=0;i< this.square * this.square;i++) {
+        for(let i=0;i< this.square * this.square;i++) {
             parent.appendChild(this.render());
             this.addColor();
             this.addId();

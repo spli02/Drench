@@ -1,0 +1,141 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 1rem 5rem;
+    background-color: #6b6b6b;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+}
+
+h1 {
+    letter-spacing: .5rem;
+}
+
+.game-area {
+    display: flex;
+    width: 60vw;
+    height: 70vh;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: solid 2px white;
+    background-color: #abb7b7;
+    justify-content: center;
+}
+
+.board-game {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 4rem;
+}
+
+.square {
+    flex: 1 1 auto;
+    width: 20px;
+    height: 20px;
+}
+
+.game-over {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 240px;
+    height: 240px;
+    border: double 7px white;
+    background-color: orange;
+    line-height: 60px;
+}
+
+.you-did {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 240px;
+    height: 240px;
+    border: double 7px white;
+    background-color: green;
+    line-height: 60px;
+}
+
+.color-area {
+    width: 20vw;
+    height: 43vh;
+    margin: 4rem 0;
+    padding: 1rem;
+    background-color: #cccccc;
+    text-align: center;
+}
+
+.count {
+    margin: .5rem;
+    background-color: #003332;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.color-palette {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.circle {
+    margin: .5rem;
+    width: 50px;
+	height: 50px;
+    border-radius: 50%;
+    border: double 4px white;
+}
+
+.circle:hover {
+    cursor: pointer;
+    opacity: .5;
+    transform: scale(0.95, 0.95);
+}
+
+.green {
+    background-color: green;
+}
+
+.pink {
+    background-color: pink;
+}
+
+.purple {
+    background-color: purple;
+}
+
+.lightGreen {
+    background-color: lightgreen;
+}
+
+.red {
+    background-color: red;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.reset {
+    height: 2rem;
+    margin: 1rem;
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+}
+
+.reset:hover {
+    cursor: pointer;
+    opacity: .7;
+}
